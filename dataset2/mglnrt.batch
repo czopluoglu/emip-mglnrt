@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH --account=edquant        ### change this to your actual account for charging
+#SBATCH --partition=longfat       ### queue to submit to
+#SBATCH --job-name=mglnrt3     ### job name
+#SBATCH --output=/gpfs/projects/edquant/cengiz/mglnrt3/mglnrt.out   ### file in which to store job stdout
+#SBATCH --error=/gpfs/projects/edquant/cengiz/mglnrt3/mglnrt.err    ### file in which to store job stderr
+#SBATCH --time=20160                ### wall-clock time limit, in minutes
+#SBATCH --mem=192000M              ### memory limit per node, in MB
+#SBATCH --nodes=1               ### number of nodes to use
+#SBATCH --ntasks-per-node=1     ### number of tasks to launch per node
+#SBATCH --cpus-per-task=4       ### number of cores for each task
+
+module load R/4.0.2
+
+R --save < /gpfs/projects/edquant/cengiz/mglnrt3/mglnrt.r
